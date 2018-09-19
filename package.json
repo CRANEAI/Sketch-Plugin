@@ -1,5 +1,6 @@
 {
   "name": "my-plugin",
+  "description": "A Sketch plugin to export documents to Fusioncode.",
   "version": "0.1.0",
   "engines": {
     "sketch": ">=3.0"
