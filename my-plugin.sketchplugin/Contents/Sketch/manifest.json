@@ -17,10 +17,11 @@
     ]
   },
   "version": "0.1.0",
+  "description": "A Sketch plugin to export documents to Fusioncode.",
   "name": "crane-plugin",
   "identifier": "crane-plugin",
   "disableCocoaScriptPreprocessor": true,
-  "appcast": "https://raw.githubusercontent.com//master/.appcast.xml",
+  "appcast": "https://raw.githubusercontent.com/CRANEAI/Sketch-Plugin/master/.appcast.xml",
   "author": "Joseph Lawson",
   "authorEmail": "josephdlawson21@gmail.com"
 }
