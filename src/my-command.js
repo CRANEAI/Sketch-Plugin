@@ -5,7 +5,7 @@ let UI = require('sketch/ui')
 
 const sketch = require('sketch')
 
-// Global initalised variables from 'context'
+// Global initalised variables from 'context' 
 var doc, plugin, iconImage
 
 var defaults // User Defaults for saving data
