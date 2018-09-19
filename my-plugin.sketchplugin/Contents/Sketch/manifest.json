@@ -16,7 +16,7 @@
       "my-command-identifier"
     ]
   },
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A Sketch plugin to export documents to Fusioncode.",
   "name": "crane-plugin",
   "identifier": "crane-plugin",

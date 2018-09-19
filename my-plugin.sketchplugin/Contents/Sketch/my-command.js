@@ -858,6 +858,8 @@ module.exports = fetch
 __webpack_require__.r(__webpack_exports__);
 var fetch = __webpack_require__(/*! sketch-polyfill-fetch */ "./node_modules/sketch-polyfill-fetch/lib/index.js");
 
+var UI = __webpack_require__(/*! sketch/ui */ "sketch/ui");
+
 var sketch = __webpack_require__(/*! sketch */ "sketch"); // Global initalised variables from 'context'
 
 
@@ -865,7 +867,6 @@ var doc, plugin, iconImage;
 var defaults; // User Defaults for saving data
 
 function onSetUp(context) {
-  console.log("setup");
   doc = context.document;
   plugin = context.plugin;
   iconImage = NSImage.alloc().initByReferencingFile(plugin.urlForResourceNamed('Assets/icon.png').path());
@@ -889,7 +890,15 @@ function onSetUp(context) {
 
   var data = {};
   data.email = userInput.viewAtIndex(1).stringValue();
-  data.password = userInput.viewAtIndex(3).stringValue(); // make post request to authenticate the user and get the key
+  data.password = userInput.viewAtIndex(3).stringValue(); //create a loader so the user knows something is happening
+  // OPTION 1
+  // UI.alert('lol', 'exporting project')
+  // OPTION 2
+  // var loader = COSAlertWindow.new();
+  // loader.setIcon(iconImage);
+  // loader.setMessageText("exporting project");
+  // loader.runModal();
+  // make post request to authenticate the user and get the key
 
   fetch('http://159.89.34.47:5002/api/v1/user/login', {
     method: 'POST',
@@ -917,25 +926,25 @@ function sendData(token) {
 
   var data = {
     data: JSON.stringify(Document),
-    token: token // send document and token to the fusion code backend
+    token: token // set a loading modal so the user knows something is happening
+    // send document and token to the fusion code backend
 
   };
-  fetch('http://localhost:3009/', {
+  fetch('http://159.89.34.47:5002/api/v1/project/import/sketch', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: data
   }).then(function (res) {
-    console.log(res); // let the user know success
-
+    // let the user know success
     var userInput = COSAlertWindow.new();
     userInput.setIcon(iconImage);
     userInput.setMessageText("Your project has been sent to Fusioncode");
     userInput.addButtonWithTitle('Okay');
     var responseCode = userInput.runModal();
   }).catch(function (err) {
-    // let the user know they logged incorrectly
+    // let the user know something bad happenned
     var userInput = COSAlertWindow.new();
     userInput.setIcon(iconImage);
     userInput.setMessageText("Something went wrong please try again");
@@ -965,6 +974,17 @@ module.exports = require("buffer");
 /***/ (function(module, exports) {
 
 module.exports = require("sketch");
+
+/***/ }),
+
+/***/ "sketch/ui":
+/*!****************************!*\
+  !*** external "sketch/ui" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("sketch/ui");
 
 /***/ })
 

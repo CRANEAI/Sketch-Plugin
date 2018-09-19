@@ -1,5 +1,6 @@
 
 const fetch = require('sketch-polyfill-fetch')
+let UI = require('sketch/ui')
 
 
 const sketch = require('sketch')
@@ -10,7 +11,6 @@ var doc, plugin, iconImage
 var defaults // User Defaults for saving data
 
 function onSetUp(context) {
-  console.log("setup")
   doc = context.document
   plugin = context.plugin
   iconImage = NSImage.alloc().initByReferencingFile(plugin.urlForResourceNamed('Assets/icon.png').path())
@@ -42,6 +42,16 @@ export default function(context) {
   let data        =  {};
   data.email      = userInput.viewAtIndex(1).stringValue();
   data.password   = userInput.viewAtIndex(3).stringValue();
+
+  //create a loader so the user knows something is happening
+      // OPTION 1
+  // UI.alert('lol', 'exporting project')
+      // OPTION 2
+  // var loader = COSAlertWindow.new();
+  // loader.setIcon(iconImage);
+	// loader.setMessageText("exporting project");
+  // loader.runModal();
+
 
   // make post request to authenticate the user and get the key
   fetch('http://159.89.34.47:5002/api/v1/user/login', {
@@ -77,9 +87,10 @@ let data = {
   data: JSON.stringify(Document),
   token: token
 }
+// set a loading modal so the user knows something is happening
 
 // send document and token to the fusion code backend
-fetch('http://localhost:3009/', {
+fetch('http://159.89.34.47:5002/api/v1/project/import/sketch', {
    method: 'POST',
    headers: {
      'Content-Type': 'application/json'
@@ -87,7 +98,6 @@ fetch('http://localhost:3009/', {
    body: data
  })
  .then(res => {
-   console.log(res)
 
    // let the user know success
    var userInput = COSAlertWindow.new();
@@ -100,7 +110,7 @@ fetch('http://localhost:3009/', {
 
  })
  .catch( err => {
-   // let the user know they logged incorrectly
+   // let the user know something bad happenned
    var userInput = COSAlertWindow.new();
 
    userInput.setIcon(iconImage);
