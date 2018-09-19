@@ -1,0 +1,19 @@
+{
+  "compatibleVersion": 3,
+  "bundleVersion": 1,
+  "icon": "icon.png",
+  "commands": [
+    {
+      "name": "Export Project to Fusion Code",
+      "identifier": "my-command-identifier",
+      "script": "./my-command.js"
+    }
+  ],
+  "menu": {
+    "title": "Export Artboards",
+    "isRoot": true,
+    "items": [
+      "my-command-identifier"
+    ]
+  }
+}
