@@ -1,5 +1,5 @@
 
-<img src="https://raw.githubusercontent.com/CRANEAI/Sketch-Plugin/master/assets/icon.png" alt="Fusioncode logo" width="500">
+<img src="https://raw.githubusercontent.com/CRANEAI/Sketch-Plugin/master/assets/icon.png" alt="Fusioncode logo" width="75">
 
 # Contrast plugin for Sketch
 
