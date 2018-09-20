@@ -1,4 +1,4 @@
-![Fusioncode Icon](https://raw.githubusercontent.com/CRANEAI/Sketch-Plugin/assets/icon.png)
+![Fusioncode Icon](https://raw.githubusercontent.com/CRANEAI/Sketch-Plugin/master/assets/icon.png)
 
 # Contrast plugin for Sketch
 
